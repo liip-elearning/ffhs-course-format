@@ -29,4 +29,29 @@ require_once($CFG->dirroot. '/course/format/topics/lib.php');
 
 
 class format_ffhs extends format_topics {
+  /**
+   * Definitions of the additional options that this course format uses for course
+   *
+   * Topics format uses the following options:
+   * - coursedisplay
+   * - numsections
+   * - hiddensections
+   *
+   * @param bool $foreditform
+   * @return array of options
+   */
+  public function course_format_options($foreditform = false){
+
+
+    $cfo= parent::course_format_options($foreditform);
+    $cfo['roomname'] = array(
+                      'default' => '',
+                      'type' => PARAM_TEXT,
+                          'label' => new lang_string('roomname', 'format_ffhs'),
+                          'help' => 'roomname',
+                          'help_component' => 'format_ffhs',
+              );
+    var_dump($cfo);
+    return $cfo;
+  }
 }
